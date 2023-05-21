@@ -1,0 +1,9 @@
+.profile__avatar-edit{
+position: relative;
+}
+
+@media screen and (max-width: 850px) {
+  .profile__avatar-edit {
+    margin: auto;
+  }
+}

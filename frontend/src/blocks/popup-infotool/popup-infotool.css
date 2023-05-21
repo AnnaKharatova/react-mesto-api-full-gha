@@ -1,0 +1,18 @@
+@media screen and (max-width: 650px) {
+    .popup-infotool {
+  width: 70%;
+    }
+  }
+  
+  @media screen and (max-width: 555px) {
+    .popup-infotool {
+      width: 80%;
+    }
+  }
+  
+  @media screen and (max-width: 450px) {
+    .popup-infotool {
+      width: 90%;
+    }
+  }
+  

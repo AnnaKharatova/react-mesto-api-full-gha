@@ -1,0 +1,17 @@
+.element {
+  margin: 0 auto;
+  max-width: 282px;
+  box-sizing: border-box;
+  display: grid;
+  grid-template-columns: repeat(2, auto);
+  grid-template-rows: repeat(2, auto);
+  background-color: #FFFFFF;
+  border-radius: 10px;
+  position: relative;
+}
+
+@media screen and (max-width: 850px) {
+  .element {
+    align-self: center;
+  }
+}

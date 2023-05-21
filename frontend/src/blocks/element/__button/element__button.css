@@ -1,0 +1,19 @@
+.element__button {
+  border: 0;
+  background-color: #FFFFFF;
+  background-image: url(../../../images/element-button.svg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  color:#FFFFFF;
+  width: 22px;
+  height: 19px;
+  margin: 25px 0 0;
+  cursor: pointer;
+  transition: opacity .3s linear;
+}
+
+.element__button:hover {
+  opacity: .5;
+}
+
+

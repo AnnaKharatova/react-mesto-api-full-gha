@@ -1,0 +1,24 @@
+.sing__input {
+    border: none;
+    box-shadow: none;
+    background-color: #000000;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 17px;
+    color: #cccc;
+    border-bottom: 2px solid #ccc;
+    height: 37px;
+    padding: 0;
+    margin: 30px auto 0;
+    width: 100%;
+  }
+
+  .sing__input:focus {
+    outline-style: none;
+    color: #cccc;
+  }
+  
+  .sing__input:valid {
+    outline-style: none;
+    background-color: #000000;
+  }

@@ -1,0 +1,19 @@
+.sing__submit-button {
+    border: none;
+    border-radius: 2px;
+    background-color: #FFFFFF;
+    color: #000000;
+    min-height: 50px;
+    margin: 200px 0 0 0;
+    padding: 0;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 21.78px;
+    text-align: center;
+    cursor: pointer;
+    transition: opacity .3s linear;
+  }
+  
+  .sing__submit-button:hover {
+    opacity: .8;
+  }

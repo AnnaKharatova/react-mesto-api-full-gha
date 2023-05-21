@@ -1,0 +1,16 @@
+.sing__link {
+    text-decoration: none;
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 17px;
+    text-align: center;
+    color: #FFFFFF;
+    transition: opacity .3s linear;
+  }
+  
+  .sing__link:hover {
+    opacity: .8;
+  }
+  
