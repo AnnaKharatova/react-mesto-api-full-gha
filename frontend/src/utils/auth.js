@@ -1,4 +1,4 @@
-export const BASE_URL = 'https://auth.nomoreparties.co';
+export const BASE_URL = 'https://api.mesto.express.nomoredomains.monster';
 
 const checkResponse = (res) => {
   if (res.ok) {return res.json()}
@@ -25,9 +25,14 @@ export const authorize = (email, password) => {
     },
     body: JSON.stringify({email, password})
   }).then(checkResponse)
+    .then((data) => {
+    localStorage.getItem('jwt', data.token)
+    return data;
+  })
 };
 
-export const checkToken = (token) => {
+export const checkToken = () => {
+  const token = localStorage.getItem('jwt')
     return fetch(`${BASE_URL}/users/me`, {
       method: 'GET',
       headers: {

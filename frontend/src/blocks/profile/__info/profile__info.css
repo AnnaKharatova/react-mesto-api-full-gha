@@ -1,7 +1,8 @@
 .profile__info {
   display: flex;
-  max-width: 600px;
+  width: 600px;
   column-gap: 18px;
+  overflow: hidden;
 }
 
 

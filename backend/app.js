@@ -1,4 +1,5 @@
 const express = require('express');
+const cors = require('cors');
 const mongoose = require('mongoose');
 const { errors, celebrate, Joi } = require('celebrate');
 const auth = require('./middlewares/auth');
@@ -6,9 +7,10 @@ const { createUser, login } = require('./controllers/users');
 const NotFoundError = require('./utils/errors/not-found-error');
 const { requestLogger, errorLogger } = require('./middlewares/logger');
 
-const { PORT = 3000 } = process.env;
+const { PORT = 3001 } = process.env;
 const app = express();
 
+app.use(cors());
 mongoose.connect('mongodb://127.0.0.1/mestodb', {
   useNewUrlParser: true,
 });

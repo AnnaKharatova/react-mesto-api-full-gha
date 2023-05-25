@@ -9,7 +9,7 @@ module.exports = (req, res, next) => {
     return next(new UnauthorizedError('Необходима авторизация'));
   }
 
-  const token = authorization.replace('Bearer ', '');
+  const token = authorization.split('Bearer ')[1];
 
   let payload;
 

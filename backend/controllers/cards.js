@@ -7,7 +7,7 @@ const {
 module.exports.getCards = (req, res, next) => {
   Card.find({})
     .then((cards) => {
-      res.status(200).send({ data: cards });
+      res.status(200).send(cards);
     })
     .catch(next);
 };
@@ -17,7 +17,7 @@ module.exports.createCard = (req, res, next) => {
   const owner = req.user._id;
   Card.create({ name, link, owner })
     .then((card) => {
-      res.status(200).send({ card });
+      res.status(200).send(card);
     })
     .catch((err) => {
       if (err instanceof mongoose.Error.ValidationError) {
@@ -34,7 +34,7 @@ module.exports.deleteCard = (req, res, next) => {
       if (req.user._id !== card.owner.toString()) {
         return next(new ForbiddenError('Попытка удалить чужую карточку'));
       }
-      return Card.deleteOne();
+      return card.deleteOne();
     })
     .then(() => res.send({ message: 'Карточка успешно удалена' }))
     .catch((err) => {
