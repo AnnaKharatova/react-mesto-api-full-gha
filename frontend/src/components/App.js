@@ -65,7 +65,7 @@ function App() {
       })
   };
 
-  useEffect(() => {
+  /*useEffect(() => {
     const jwt = localStorage.getItem('jwt');
     if (jwt) {
       checkToken(jwt).then((res) => {
@@ -90,7 +90,36 @@ function App() {
         })
         .catch((err) => console.log(err));
     }
-  }, [loggedIn]);
+  }, [loggedIn]);*/
+
+  useEffect(() => {
+    const jwt = localStorage.getItem('jwt');
+    if (jwt) {
+      checkToken(jwt)
+        .then((res) => {
+          if (res) {
+            const { email } = res;
+            setLoggedIn(true);
+            setAuthEmail(email);
+            navigate("/", { replace: true })
+          }
+        })
+        .then(() => {
+          if (loggedIn) {
+            Promise.all([api.getUserInfo(), api.getInitialCards()])
+              .then((data) => {
+                setCurrentUser(data[0])
+                setCards([...data[1]].reverse());
+              })
+              .catch((err) => console.log(err));
+          }
+        })
+        .catch((err) => {
+          console.log(err)
+        });
+    }
+  }, [loggedIn, navigate]);
+  
 
   function addPlace(data) {
     api.addCard(data)

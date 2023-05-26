@@ -1,6 +1,5 @@
 class Api {
   constructor({ baseUrl, headers }) {
-    
     this._baseUrl = baseUrl;
     this._headers = headers;
   }
@@ -15,14 +14,20 @@ class Api {
 
   getInitialCards() {
     return fetch(`${this._baseUrl}/cards`, {
-      headers: this._headers,
+      headers: {
+        authorization: `Bearer ${localStorage.getItem('jwt')}`,
+        'Content-Type': 'application/json'
+      }
     })
       .then(this._checkResponse)
   }
 
   getUserInfo() {
     return fetch(`${this._baseUrl}/users/me`, {
-      headers: this._headers
+      headers: {
+        authorization: `Bearer ${localStorage.getItem('jwt')}`,
+        'Content-Type': 'application/json'
+    }
     })
       .then(this._checkResponse)
   }
@@ -30,7 +35,9 @@ class Api {
   editUserInfo(data) {
     return fetch(`${this._baseUrl}/users/me`, {
       method: 'PATCH',
-      headers: this._headers,
+      headers:    { 
+        authorization: `Bearer ${localStorage.getItem('jwt')}`,
+        'Content-Type': 'application/json'},
       body: JSON.stringify(data)
     })
       .then(this._checkResponse)
@@ -85,7 +92,9 @@ class Api {
 }
 
 const api = new Api({
-  baseUrl: 'https://api.mesto.express.nomoredomains.monster',
+  //baseUrl: 'https://api.mesto.express.nomoredomains.monster',
+  baseUrl: 'http://localhost:3000',
+
   headers: {
     authorization: `Bearer ${localStorage.getItem('jwt')}`,
     'Content-Type': 'application/json'

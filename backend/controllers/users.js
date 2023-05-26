@@ -1,3 +1,4 @@
+const { NODE_ENV, JWT_SECRET } = process.env;
 const mongoose = require('mongoose');
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
@@ -111,7 +112,7 @@ module.exports.login = (req, res, next) => {
           if (!matched) {
             return next(new UnauthorizedError('Неправильные почта или пароль'));
           }
-          const token = jwt.sign({ _id: user._id }, 'super-strong-secret', { expiresIn: '7d' });
+          const token = jwt.sign({ _id: user._id }, NODE_ENV === 'production' ? JWT_SECRET : 'dev-secret', { expiresIn: '7d' });
           return res.send({ token });
         })
         .catch(next);
