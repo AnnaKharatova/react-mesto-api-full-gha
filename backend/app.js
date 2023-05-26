@@ -7,6 +7,7 @@ const auth = require('./middlewares/auth');
 const { createUser, login } = require('./controllers/users');
 const NotFoundError = require('./utils/errors/not-found-error');
 const { requestLogger, errorLogger } = require('./middlewares/logger');
+const { urlRegex } = require('./utils/constants');
 
 const { PORT = 3000 } = process.env;
 const app = express();
@@ -32,7 +33,7 @@ app.post('/signup', celebrate({
     password: Joi.string().required(),
     name: Joi.string().default('Жак-Ив Кусто').min(2).max(30),
     about: Joi.string().default('Исследователь').min(2).max(30),
-    avatar: Joi.string().regex(/^https?:\/\/(?:w{3}\.)?(?:[a-z0-9]+[a-z0-9-]*\.)+[a-z]{2,}(?::[0-9]+)?(?:\/\S*)?#?$/i)
+    avatar: Joi.string().regex(urlRegex)
       .default('https://pictures.s3.yandex.net/resources/jacques-cousteau_1604399756.png'),
   }),
 }), createUser);
