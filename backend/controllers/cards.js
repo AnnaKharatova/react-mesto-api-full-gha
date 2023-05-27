@@ -31,8 +31,8 @@ module.exports.deleteCard = (req, res, next) => {
   const { cardId } = req.params;
   Card.findById(cardId).orFail()
     .then((card) => {
-      if (req.user._id !== card.owner) {
-        next(new BadRequestError('Переданы некорректные данные'));
+      if (req.user._id !== card.owner.toString()) {
+        return next(new ForbiddenError('Попытка удалить чужую карточку'));
       }
       return card.deleteOne();
     })
